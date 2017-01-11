@@ -17,6 +17,9 @@ def ret_http(conn, addr, data):
 	conn.send(data.encode("utf-8"))
 
 while True:
-	conn, addr = sock.accept()
-	print(addr[0], " joined")
-	ret_http(conn, addr, "Your ip: " + addr[0])
+	try:
+		conn, addr = sock.accept()
+		print(addr[0], " joined")
+		ret_http(conn, addr, "Your ip: " + addr[0])
+	except:
+		continue
